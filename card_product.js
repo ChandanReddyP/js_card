@@ -5,5 +5,3 @@ let item={
     price:70000,
     qty:1
 }
-
-let htmlcode=
