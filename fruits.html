@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>LIST OF FRUITS</h1>
+    <div class="display"></div>
+        <div class="buttons">
+            <button id="start">remove in the top</button>
+            <button id="end">remove in the btm</button>
+        </div>
+        <br>
+        <div>
+            <input type="text" placeholder="enter fruit" id="input"> <br> <br>
+            <button id="add-top">add in top</button>
+            <button id="add-btm">add in bottom</button>
+        </div>
+        <br>
+        <div>
+            <input type="number" placeholder="enter number" id="number"> <br> <br>
+            <button id="remove"> Remove </button>
+        </div>
+    
+    <script>
+        let div=document.querySelector('.display');
+        let fruits=['apple','custed','banana','mango'];
+
+        function displayfruits(){
+        let str="<ol >"
+        for(let i=0;i<fruits.length;i++){
+            str +=`<li>${fruits[i]}</li>`
+        }
+        str+="</ol>"
+        div.innerHTML = str
+        }
+        displayfruits()
+
+        let endbtn=document.getElementById('end');
+        let startbtn=document.getElementById('start');
+        
+        endbtn.addEventListener('click',()=>{
+            fruits.pop()
+            displayfruits()
+        })
+
+        startbtn.addEventListener('click',()=>{
+            fruits.shift()
+            displayfruits()
+        })
+        
+
+        let addtop=document.getElementById('add-top');
+        let addbtm=document.getElementById('add-btm');
+        
+        addtop.addEventListener('click',()=>{
+            let fruit=document.getElementById("input").value
+            if(fruit.trim()){
+                fruits.unshift(fruit)
+                displayfruits()
+                document.getElementById("input").value=""
+            }else{
+                alert("enter fruit name")
+            }
+        })
+
+        addbtm.addEventListener('click',()=>{
+            let fruit=document.getElementById("input").value
+            if(fruit.trim()){
+                fruits.push(fruit)
+                displayfruits()
+                document.getElementById("input").value=""
+            }else{
+                alert("enter fruit name")
+            }
+        })
+
+        let number = document.getElementById('number')
+        let removebtn=document.querySelector("#remove")
+        removebtn.addEventListener('click',()=>{
+            let index=Number(number.value.trim()) -1
+            if(index || index == 0){
+                if(index < 0){
+                    alert('provide valid number')
+                }
+                else if(index > fruits.length){
+                    alert("fruit is not exist")
+                }
+                else {
+                    fruits.splice(index,1)
+                    displayfruits()
+                    number.value=""
+                }
+            }
+            else {
+                alert("give a number to remove")
+            }
+        })
+
+    </script>
+</body>
+</html>
