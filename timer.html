@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hi">Jspyders</h1>
+
+    <button id="clr">change color</button>
+    <button id="bg">change baground color</button>
+    <script>
+        let clrbtn = document.getElementById("clr")
+        clrbtn.addEventListener("click", () => {
+            setTimeout(()=>{
+                document.getElementById("hi").style.color = "red"
+            },2000)
+        })
+
+        let bgbtn = document.getElementById("bg")
+        bgbtn.addEventListener("click", () =>{
+            setInterval(()=>{
+                // let bgClr = document.getElementById("hi").style.backgroundColor
+                // if(bgClr == "yellow")
+                // {
+                //     document.getElementById("hi").style.backgroundColor = "pink"
+                // }
+                // else{
+                //     document.getElementById("hi").style.backgroundColor = "yellow"
+                // }
+
+
+                let red = Math.trunc(Math.random() * 255)
+                let green = Math.trunc(Math.random() * 255)
+                let blue = Math.trunc(Math.random() * 255)
+                document.getElementById("hi").style.backgroundColor = `rgb(${red},${green},${blue})`
+            },1000)
+        })
+    </script>
+</body>
+</html>
